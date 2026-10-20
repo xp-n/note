@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f8f4f1">
+<title>月光手帐 · Mood Journal</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap');
+:root{--bg:#f8f5f2;--paper:#fffdfa;--ink:#29252b;--muted:#928a91;--line:#eee6e2;--rose:#d89ca7;--rose-dark:#a95f72;--lav:#e9e4f4;--sage:#e2ebe3;--peach:#f6e4d9;--shadow:0 16px 50px rgba(73,48,58,.07)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans','Noto Serif SC',sans-serif;min-height:100vh;background-image:radial-gradient(circle at 10% 5%,rgba(238,207,211,.28),transparent 28%),radial-gradient(circle at 90% 18%,rgba(218,212,238,.3),transparent 25%)}
+button,input,textarea,select{font:inherit}button{cursor:pointer}.shell{max-width:1200px;margin:auto;padding:30px 34px 60px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:34px}.brand{display:flex;align-items:center;gap:13px}.brand-mark{width:44px;height:44px;border-radius:15px;background:linear-gradient(145deg,#f2d9dc,#e6dff1);display:grid;place-items:center;font-size:23px;box-shadow:0 7px 20px #d6bac633}.brand h1{font:600 21px 'Noto Serif SC',serif;margin:0;letter-spacing:1px}.brand p{margin:4px 0 0;color:var(--muted);font-size:10px;letter-spacing:2.6px;text-transform:uppercase}.top-actions{display:flex;gap:9px;align-items:center}.btn{border:1px solid var(--line);background:rgba(255,253,250,.8);border-radius:13px;padding:11px 15px;color:#655b63;font-size:13px;transition:.2s}.btn:hover{transform:translateY(-1px);box-shadow:0 7px 18px #8b68700d}.btn.primary{background:#302a31;color:white;border-color:#302a31;padding:12px 18px}.btn.primary:hover{background:#51434c}.hero{display:grid;grid-template-columns:1.4fr .8fr;gap:18px;margin-bottom:24px}.welcome{background:linear-gradient(120deg,#f0dce0 0%,#f7e9e3 55%,#e9e2f1 100%);border-radius:26px;padding:30px 34px;position:relative;overflow:hidden;min-height:190px}.welcome:after{content:'✦';position:absolute;right:32px;top:15px;font-size:92px;color:#fff8;transform:rotate(12deg)}.eyebrow{font-size:11px;letter-spacing:2px;color:#8f6e79;text-transform:uppercase}.welcome h2{font:600 clamp(25px,3vw,35px) 'Noto Serif SC',serif;margin:15px 0 9px;position:relative;z-index:1}.welcome p{font-size:13px;color:#796b72;margin:0;line-height:1.8;position:relative;z-index:1}.quote-card{border:1px solid #eee6e6;background:rgba(255,253,250,.75);border-radius:26px;padding:26px;display:flex;flex-direction:column;justify-content:center}.quote-icon{font-size:24px;color:#c68d9c}.quote-card blockquote{font:500 16px/1.9 'Noto Serif SC',serif;margin:10px 0 12px;color:#55474f}.quote-card small{font-size:11px;color:#a69ba2;letter-spacing:1px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:26px}.stat{padding:16px 20px;border-radius:18px;background:rgba(255,253,250,.8);border:1px solid #f0e9e6;display:flex;align-items:center;justify-content:space-between}.stat span{font-size:12px;color:var(--muted)}.stat strong{font-size:23px;font-weight:600;color:#53434c}.stat i{font-style:normal;font-size:20px;opacity:.8}.workspace{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(280px,.8fr);gap:22px;align-items:start}.panel{background:rgba(255,253,250,.9);border:1px solid #eee7e3;border-radius:24px;padding:24px;box-shadow:var(--shadow)}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}.panel-title{font:600 19px 'Noto Serif SC',serif;margin:0}.panel-sub{font-size:11px;color:var(--muted);margin-top:6px}.search-wrap{position:relative}.search-wrap input{width:170px;border:1px solid var(--line);background:#fffdfa;border-radius:11px;padding:10px 12px 10px 32px;font-size:12px;outline:none}.search-wrap:before{content:'⌕';position:absolute;left:11px;top:4px;font-size:21px;color:#a99da4}.filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:20px}.filter{border:1px solid transparent;background:#f6f1ef;color:#94858c;border-radius:999px;padding:7px 12px;font-size:11px}.filter.active{background:#f0dce0;color:#8d5364;border-color:#e8cbd1}.entries{display:flex;flex-direction:column;gap:12px}.entry{border:1px solid #f0e9e6;border-radius:17px;padding:17px 18px;background:#fffdfa;transition:.2s;cursor:pointer}.entry:hover{border-color:#e3c5cc;transform:translateY(-1px)}.entry-top{display:flex;justify-content:space-between;gap:12px;align-items:center}.entry-date{font-size:11px;color:#a49aa0;letter-spacing:.4px}.entry-mood{font-size:12px;color:#8f6675;background:#f8ecee;border-radius:99px;padding:6px 10px;white-space:nowrap}.entry h3{font:600 16px 'Noto Serif SC',serif;margin:12px 0 7px}.entry p{font-size:12px;color:#827981;line-height:1.8;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;white-space:pre-wrap}.entry-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:14px}.tags{display:flex;gap:6px;flex-wrap:wrap}.tag{font-size:10px;color:#8d8490;background:#f4f0f6;padding:5px 8px;border-radius:7px}.entry-actions{display:flex;gap:6px}.mini-btn{border:0;background:transparent;color:#b3a6ac;font-size:12px;padding:4px}.mini-btn:hover{color:#9f5d70}.empty{text-align:center;padding:45px 15px;color:#a69aa1}.empty .flower{font-size:35px;margin-bottom:10px}.empty p{font-size:12px;line-height:1.8}.side-stack{display:flex;flex-direction:column;gap:18px}.composer{position:relative}.field-label{display:block;font-size:11px;color:#8e828a;letter-spacing:.7px;margin:18px 0 9px}.composer input[type=text],.composer input[type=date],.composer textarea,.composer select{width:100%;border:1px solid #eee5e2;border-radius:12px;background:#fffdfa;padding:12px 13px;outline:none;color:#4c4148;font-size:13px;transition:.2s}.composer input:focus,.composer textarea:focus,.composer select:focus{border-color:#d9aab5;box-shadow:0 0 0 3px #f6e8eb}.composer textarea{min-height:150px;resize:vertical;line-height:1.9}.moods{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.mood{border:1px solid #eee6e5;border-radius:12px;background:#fffdfa;padding:10px 2px 8px;text-align:center;color:#95878f;font-size:10px;transition:.18s}.mood .emoji{display:block;font-size:22px;margin-bottom:5px;filter:saturate(.8)}.mood.selected{background:#f8e9ec;border-color:#d8a5b0;color:#985b6c;box-shadow:inset 0 0 0 1px #e8c6ce}.composer-bottom{display:flex;gap:8px;margin-top:18px}.composer-bottom button{flex:1}.side-note{background:linear-gradient(135deg,#e8e4f1,#f5e8e6);border-radius:21px;padding:21px 22px}.side-note h3{font:600 15px 'Noto Serif SC',serif;margin:0 0 8px}.side-note p{font-size:12px;color:#82747f;line-height:1.9;margin:0}.note-foot{font-size:10px;color:#a295a3;margin-top:12px;letter-spacing:1px}.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:#302a31;color:#fff;padding:12px 18px;border-radius:13px;font-size:12px;opacity:0;pointer-events:none;transition:.25s;z-index:20;box-shadow:0 12px 35px #302a3133}.toast.show{opacity:1;transform:translate(-50%,0)}.modal-backdrop{position:fixed;inset:0;background:#29232a66;backdrop-filter:blur(5px);display:none;align-items:center;justify-content:center;padding:20px;z-index:10}.modal-backdrop.show{display:flex}.modal{width:min(620px,100%);max-height:90vh;overflow:auto;background:var(--paper);border-radius:24px;padding:28px;box-shadow:0 25px 80px #24151d33}.modal-head{display:flex;justify-content:space-between;align-items:center}.modal-head h2{font:600 21px 'Noto Serif SC',serif;margin:0}.close{border:0;background:#f4edeb;border-radius:50%;width:34px;height:34px;font-size:19px;color:#7c6d75}.modal-content{line-height:2;white-space:pre-wrap;color:#645861;font-size:14px;margin-top:18px}.modal-meta{color:#a0949c;font-size:11px;margin-top:12px}.modal-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:16px}.footer{text-align:center;color:#b4a8ad;font-size:10px;letter-spacing:1.5px;margin-top:32px}.hidden{display:none!important}
+@media(max-width:850px){.shell{padding:22px 18px 45px}.hero{grid-template-columns:1fr}.quote-card{min-height:140px}.workspace{grid-template-columns:1fr}.side-stack{display:grid;grid-template-columns:1fr}.welcome{min-height:170px}}
+@media(max-width:520px){.shell{padding:17px 12px 35px}.topbar{align-items:flex-start;margin-bottom:22px}.brand h1{font-size:18px}.brand-mark{width:39px;height:39px}.top-actions{gap:5px}.top-actions .btn{padding:9px 10px;font-size:11px}.top-actions .primary{font-size:11px}.welcome{padding:24px;border-radius:21px}.welcome h2{font-size:26px}.stats{gap:7px}.stat{padding:13px 10px;align-items:flex-start;flex-direction:column;gap:5px}.stat strong{font-size:20px}.panel{padding:17px;border-radius:20px}.panel-head{align-items:flex-start;flex-direction:column}.search-wrap,.search-wrap input{width:100%}.moods{gap:5px}.mood{font-size:9px}.mood .emoji{font-size:20px}.composer-bottom{flex-direction:column}.entry{padding:14px}.entry h3{font-size:15px}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <div class="brand"><div class="brand-mark">☾</div><div><h1>月光手帐</h1><p>MOONLIT · MY LITTLE UNIVERSE</p></div></div>
+    <div class="top-actions"><button class="btn" id="exportBtn">导出备份 ↗</button><button class="btn primary" id="newBtn">＋ 写一篇日记</button></div>
+  </header>
+  <section class="hero">
+    <div class="welcome"><div class="eyebrow" id="todayLabel">A LITTLE NOTE TO MYSELF</div><h2>把今天，温柔地收藏起来。</h2><p>心情会流动，喜欢会发光。<br>在这里，记录每一个值得被记住的瞬间。</p></div>
+    <div class="quote-card"><div class="quote-icon">✧</div><blockquote id="quote">“生活不是等待暴风雨过去，而是学会在雨中跳舞。”</blockquote><small>YOUR FEELINGS DESERVE A PLACE</small></div>
+  </section>
+  <section class="stats">
+    <div class="stat"><span>收藏的日常 · ENTRIES</span><strong id="totalCount">0 篇</strong><i>📖</i></div>
+    <div class="stat"><span>连续记录 · STREAK</span><strong id="streakCount">0 天</strong><i>🌙</i></div>
+    <div class="stat"><span>最近的心情 · MOOD</span><strong id="latestMood">还没记录</strong><i>🌷</i></div>
+  </section>
+  <main class="workspace">
+    <section class="panel">
+      <div class="panel-head"><div><h2 class="panel-title">日记收藏夹</h2><div class="panel-sub">每一页，都是认真生活的证据。</div></div><div class="search-wrap"><input id="searchInput" type="search" placeholder="搜索日记、标签…"></div></div>
+      <div class="filters" id="filters"><button class="filter active" data-filter="全部">全部记录</button><button class="filter" data-filter="开心">☀ 开心</button><button class="filter" data-filter="平静">☁ 平静</button><button class="filter" data-filter="低落">🌧 低落</button><button class="filter" data-filter="心动">💗 心动</button><button class="filter" data-filter="疲惫">🌙 疲惫</button></div>
+      <div class="entries" id="entries"></div>
+    </section>
+    <aside class="side-stack">
+      <section class="panel composer" id="composer">
+        <div class="panel-head"><div><h2 class="panel-title" id="formTitle">写下此刻</h2><div class="panel-sub">不必完美，真实就很好。</div></div><span style="font-size:23px">✎</span></div>
+        <form id="diaryForm">
+          <label class="field-label" for="entryDate">今天的日期</label><input id="entryDate" type="date" required>
+          <label class="field-label">此刻的心情</label>
+          <div class="moods" id="moodPicker">
+            <button type="button" class="mood" data-mood="开心"><span class="emoji">☀️</span>开心</button>
+            <button type="button" class="mood" data-mood="平静"><span class="emoji">🌿</span>平静</button>
+            <button type="button" class="mood" data-mood="低落"><span class="emoji">🌧️</span>低落</button>
+            <button type="button" class="mood" data-mood="心动"><span class="emoji">💗</span>心动</button>
+            <button type="button" class="mood" data-mood="疲惫"><span class="emoji">🌙</span>疲惫</button>
+          </div>
+          <label class="field-label" for="entryTitle">给今天起个标题</label><input id="entryTitle" type="text" maxlength="70" placeholder="比如：被舞台照亮的一天" required>
+          <label class="field-label" for="entryContent">今天发生了什么？</label><textarea id="entryContent" placeholder="写下你的快乐、委屈、期待，或是某个闪闪发光的小瞬间……" required></textarea>
+          <label class="field-label" for="entryTags">添加标签（用逗号分隔）</label><input id="entryTags" type="text" placeholder="追星日常, 演唱会, 给自己充电">
+          <div class="composer-bottom"><button type="submit" class="btn primary" id="saveBtn">保存这篇日记 ✧</button><button type="button" class="btn hidden" id="cancelEdit">取消编辑</button></div>
+        </form>
+      </section>
+      <section class="side-note"><h3>给追光的你 ✦</h3><p>喜欢一个人带来的光，也别忘了照顾自己的生活。你的感受值得被认真对待，你本身就是自己故事里的主角。</p><div class="note-foot">LOVE WHAT YOU LOVE · LOVE YOURSELF</div></section>
+    </aside>
+  </main>
+  <div class="footer">MADE OF LITTLE MOMENTS & A LOT OF LOVE · 月光手帐</div>
+</div>
+<div class="toast" id="toast"></div>
+<div class="modal-backdrop" id="detailModal"><div class="modal"><div class="modal-head"><h2 id="detailTitle">日记详情</h2><button class="close" id="closeModal" aria-label="关闭">×</button></div><div class="modal-meta" id="detailMeta"></div><div class="modal-content" id="detailContent"></div><div class="modal-tags" id="detailTags"></div><div class="composer-bottom"><button class="btn" id="detailEdit">编辑这篇</button><button class="btn" id="detailDelete">删除日记</button><button class="btn primary" id="detailClose">收好啦 ✧</button></div></div></div>
+<input type="file" id="importInput" accept="application/json,.json" class="hidden">
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const STORAGE_KEY='moonlit_journal_entries_v1';
+const moods={开心:'☀️',平静:'🌿',低落:'🌧️',心动:'💗',疲惫:'🌙'};
+const quotes=[
+'“生活不是等待暴风雨过去，而是学会在雨中跳舞。”',
+'“你不必一直闪闪发光，偶尔做一颗安静的星星也很好。”',
+'“把喜欢的人放在心上，也把自己放在心上。”',
+'“普通日子里，也藏着值得庆祝的小小奇迹。”',
+'“慢慢来，你正在成为自己喜欢的大人。”'
+];
+let entries=[],selectedMood='开心',activeFilter='全部',editingId=null,currentDetailId=null;
+const today=new Date();
+const localDate=d=>{const x=new Date(d);return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`};
+$('entryDate').value=localDate(today);
+$('todayLabel').textContent=`${today.getFullYear()} · ${String(today.getMonth()+1).padStart(2,'0')} / ${String(today.getDate()).padStart(2,'0')}  ✦  A LITTLE NOTE TO MYSELF`;
+$('quote').textContent=quotes[(today.getDate()+today.getMonth())%quotes.length];
+function load(){try{const raw=localStorage.getItem(STORAGE_KEY);entries=raw?JSON.parse(raw):[]}catch(e){entries=[]}if(!Array.isArray(entries))entries=[];render()}
+function persist(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(entries));return true}catch(e){toast('浏览器存储空间不足，请先导出备份');return false}}
+function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),2400)}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function fmtDate(s){if(!s)return '';const [y,m,d]=s.split('-');return `${y}年${Number(m)}月${Number(d)}日`}
+function streak(){const days=new Set(entries.map(e=>e.date));let n=0,d=new Date();if(!days.has(localDate(d)))d.setDate(d.getDate()-1);while(days.has(localDate(d))){n++;d.setDate(d.getDate()-1)}return n}
+function renderStats(){ $('totalCount').textContent=`${entries.length} 篇`; $('streakCount').textContent=`${streak()} 天`;const latest=[...entries].sort((a,b)=>(b.updatedAt||b.createdAt)-(a.updatedAt||a.createdAt))[0];$('latestMood').textContent=latest?`${moods[latest.mood]||'♡'} ${latest.mood}`:'还没记录'}
+function render(){
+ renderStats();const q=$('searchInput').value.trim().toLowerCase();
+ const filtered=[...entries].sort((a,b)=>b.date.localeCompare(a.date)||(b.updatedAt||0)-(a.updatedAt||0)).filter(e=>(activeFilter==='全部'||e.mood===activeFilter)&&(!q||[e.title,e.content,e.mood,...(e.tags||[])].join(' ').toLowerCase().includes(q)));
+ const root=$('entries');
+ if(!filtered.length){root.innerHTML=`<div class="empty"><div class="flower">${entries.length?'☁️':'🌷'}</div><strong>${entries.length?'没有找到这条记录':'你的故事，从第一篇开始'}</strong><p>${entries.length?'试试其他关键词或心情筛选。':'选一个此刻的心情，写下今天的小事吧。<br>保存后，这里会替你珍藏每一次心动。'}</p></div>`;return}
+ root.innerHTML=filtered.map(e=>`<article class="entry" data-open="${esc(e.id)}"><div class="entry-top"><span class="entry-date">${esc(fmtDate(e.date))}</span><span class="entry-mood">${moods[e.mood]||'♡'} ${esc(e.mood)}</span></div><h3>${esc(e.title)}</h3><p>${esc(e.content)}</p><div class="entry-bottom"><div class="tags">${(e.tags||[]).slice(0,3).map(t=>`<span class="tag"># ${esc(t)}</span>`).join('')}</div><div class="entry-actions"><button class="mini-btn" data-edit="${esc(e.id)}" title="编辑">编辑</button><button class="mini-btn" data-delete="${esc(e.id)}" title="删除">删除</button></div></div></article>`).join('');
+}
+function setMood(m){selectedMood=m;document.querySelectorAll('.mood').forEach(b=>b.classList.toggle('selected',b.dataset.mood===m))}
+function resetForm(){editingId=null;$('diaryForm').reset();$('entryDate').value=localDate(today);setMood('开心');$('formTitle').textContent='写下此刻';$('saveBtn').textContent='保存这篇日记 ✧';$('cancelEdit').classList.add('hidden')}
+function startEdit(id){const e=entries.find(x=>x.id===id);if(!e)return;editingId=id;$('entryDate').value=e.date;$('entryTitle').value=e.title;$('entryContent').value=e.content;$('entryTags').value=(e.tags||[]).join(', ');setMood(e.mood);$('formTitle').textContent='重新整理这页';$('saveBtn').textContent='保存修改 ✧';$('cancelEdit').classList.remove('hidden');$('composer').scrollIntoView({behavior:'smooth',block:'start'});$('entryTitle').focus()}
+function deleteEntry(id){const e=entries.find(x=>x.id===id);if(!e)return;if(!confirm(`确定要删除「${e.title}」这篇日记吗？删除后无法在网页内恢复。建议先导出备份。`))return;entries=entries.filter(x=>x.id!==id);persist();render();if(currentDetailId===id)closeDetail();toast('这篇日记已删除')}
+function openDetail(id){const e=entries.find(x=>x.id===id);if(!e)return;currentDetailId=id;$('detailTitle').textContent=e.title;$('detailMeta').textContent=`${fmtDate(e.date)}  ·  ${moods[e.mood]||'♡'} ${e.mood}`;$('detailContent').textContent=e.content;$('detailTags').innerHTML=(e.tags||[]).map(t=>`<span class="tag"># ${esc(t)}</span>`).join('');$('detailModal').classList.add('show')}
+function closeDetail(){$('detailModal').classList.remove('show');currentDetailId=null}
+document.querySelectorAll('.mood').forEach(b=>b.addEventListener('click',()=>setMood(b.dataset.mood)));
+$('diaryForm').addEventListener('submit',e=>{e.preventDefault();const title=$('entryTitle').value.trim(),content=$('entryContent').value.trim();if(!title||!content){toast('给这一天留一点文字吧');return}const now=Date.now();const obj={id:editingId||`${now}_${Math.random().toString(36).slice(2,8)}`,date:$('entryDate').value,mood:selectedMood,title,content,tags:$('entryTags').value.split(/[,，、]/).map(s=>s.trim()).filter(Boolean).slice(0,10),createdAt:editingId?(entries.find(x=>x.id===editingId)?.createdAt||now):now,updatedAt:now};if(editingId)entries=entries.map(x=>x.id===editingId?obj:x);else entries.push(obj);persist();render();resetForm();toast(editingId?'修改已保存，心情也被好好收下了':'日记已收藏，今天值得被记住 ✧')});
+$('cancelEdit').addEventListener('click',resetForm);$('newBtn').addEventListener('click',()=>{$('composer').scrollIntoView({behavior:'smooth',block:'start'});$('entryTitle').focus()});
+$('filters').addEventListener('click',e=>{const b=e.target.closest('[data-filter]');if(!b)return;activeFilter=b.dataset.filter;document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x===b));render()});
+$('searchInput').addEventListener('input',render);
+$('entries').addEventListener('click',e=>{const del=e.target.closest('[data-delete]'),edit=e.target.closest('[data-edit]'),card=e.target.closest('[data-open]');if(del){e.stopPropagation();deleteEntry(del.dataset.delete)}else if(edit){e.stopPropagation();startEdit(edit.dataset.edit)}else if(card)openDetail(card.dataset.open)});
+$('detailEdit').addEventListener('click',()=>{const id=currentDetailId;closeDetail();startEdit(id)});$('detailDelete').addEventListener('click',()=>{const id=currentDetailId;closeDetail();deleteEntry(id)});$('closeModal').addEventListener('click',closeDetail);$('detailClose').addEventListener('click',closeDetail);$('detailModal').addEventListener('click',e=>{if(e.target===$('detailModal'))closeDetail()});
+$('exportBtn').addEventListener('click',()=>{const data={app:'月光手帐',version:1,exportedAt:new Date().toISOString(),entries};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`月光手帐备份_${localDate(today)}.json`;a.click();URL.revokeObjectURL(url);toast('备份文件已导出，请妥善保存')});
+const importBtn=document.createElement('button');importBtn.className='btn';importBtn.textContent='导入备份 ↙';importBtn.title='从之前导出的 JSON 文件恢复记录';document.querySelector('.top-actions').insertBefore(importBtn,$('newBtn'));importBtn.addEventListener('click',()=>$('importInput').click());
+$('importInput').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const parsed=JSON.parse(await f.text());const incoming=Array.isArray(parsed)?parsed:parsed.entries;if(!Array.isArray(incoming)||incoming.some(x=>!x||!x.id||!x.title||!x.date))throw new Error('格式不正确');if(!confirm(`备份中有 ${incoming.length} 篇日记。选择“确定”将与当前记录合并（相同 ID 的记录以备份为准）。`))return;const map=new Map(entries.map(x=>[x.id,x]));incoming.forEach(x=>map.set(x.id,{...x,tags:Array.isArray(x.tags)?x.tags:[]}));entries=[...map.values()];persist();render();toast('备份已导入');}catch(err){toast('导入失败：请选择月光手帐导出的 JSON 备份')}finally{e.target.value=''}});
+load();
+})();
+</script>
+</body>
+</html>
